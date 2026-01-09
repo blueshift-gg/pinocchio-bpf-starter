@@ -8,7 +8,8 @@ license = "MIT"
 crate-type = ["cdylib"]
 
 [dependencies]
-pinocchio = "0.10.1"
+pinocchio = { version = "0.10.1", default-features = false }
+solana-define-syscall = { version = "4.0.1", features = ["unstable-static-syscalls"] }
 solana-program-log = "1.1.0"
 
 [dev-dependencies]
@@ -16,11 +17,8 @@ mollusk-svm = "0.10.0"
 solana-instruction = "3.1.0"
 
 [profile.release]
-overflow-checks = true
-lto = "fat"
-codegen-units = 1
-
-[profile.release.build-override]
 opt-level = 3
-incremental = false
+lto = true
 codegen-units = 1
+panic = "abort"
+strip = true

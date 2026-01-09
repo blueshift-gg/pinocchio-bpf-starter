@@ -1,6 +1,6 @@
 #![cfg_attr(target_arch = "bpf", no_std)]
 
-use pinocchio::{AccountView, Address, ProgramResult, nostd_panic_handler, no_allocator, program_entrypoint};
+use pinocchio::{AccountView, Address, ProgramResult, no_allocator, nostd_panic_handler, program_entrypoint};
 use solana_program_log::log;
 
 nostd_panic_handler!();
@@ -8,7 +8,6 @@ no_allocator!();
 
 program_entrypoint!(process_instruction);
 
-#[unsafe(no_mangle)]
 fn process_instruction(
     _program_id: &Address,     // Address of the account the program was loaded into
     _accounts: &[AccountView], // All accounts required to process the instruction
