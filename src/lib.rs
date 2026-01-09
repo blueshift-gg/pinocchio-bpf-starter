@@ -1,7 +1,10 @@
 #![cfg_attr(target_arch = "bpf", no_std)]
 
-use pinocchio::{AccountView, Address, ProgramResult, program_entrypoint};
+use pinocchio::{AccountView, Address, ProgramResult, nostd_panic_handler, no_allocator, program_entrypoint};
 use solana_program_log::log;
+
+nostd_panic_handler!();
+no_allocator!();
 
 program_entrypoint!(process_instruction);
 
